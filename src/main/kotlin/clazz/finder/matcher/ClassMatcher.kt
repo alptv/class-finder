@@ -22,10 +22,8 @@ class ClassMatcher(pattern: String) : Matcher {
     }
 
 
-    private fun prepareClassName(className: String, shouldEndsMatch: Boolean): StringView {
-        return StringView(with(className) { substring(lastIndexOf('.') + 1) }
-                + if (shouldEndsMatch) " " else "")
-    }
+    private fun prepareClassName(className: String, shouldEndsMatch: Boolean) =
+        StringView(className + (if (shouldEndsMatch) " " else ""))
 
 
     private fun tryMatchChunk(camelCaseChunk: StringView, firstMatchedChar: Int): Int {

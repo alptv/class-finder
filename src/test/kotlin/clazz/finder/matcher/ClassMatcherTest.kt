@@ -6,6 +6,15 @@ import org.junit.Test
 class ClassMatcherTest {
 
     @Test
+    fun `empty pattern should match all`() {
+        val matcher = ClassMatcher("")
+        assertThat(matcher.match("FooBazBar")).isTrue
+        assertThat(matcher.match("ABCD")).isTrue
+        assertThat(matcher.match("X")).isTrue
+    }
+
+
+    @Test
     fun `should match by upper case in right order`() {
         var matcher = ClassMatcher("FBB")
         assertThat(matcher.match("FooBazBar")).isTrue
